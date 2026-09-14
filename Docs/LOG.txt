@@ -1,0 +1,5 @@
+COMPLETED:
+[9/14/2026]: Layer Composition Logic (Phase 1)
+Task: Design hardware logic to dynamically layer horse details while respecting sprite boundary.
+Action: Wrote Verilog in EDA Playground, defining outline, fill, and pattern, calculating the corresponding output with bitwise operations for 16x16 bitmaps. Built ASCII testbench renderer to verify output.
+Result: 0-latency combinational layering engine that respects sprite edges. Also, refreshed my Verilog chops.

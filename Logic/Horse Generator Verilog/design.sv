@@ -4,22 +4,26 @@ module bitmap_xor (
   output logic [255:0] frame_out
 );
   
-	// create internal 256-bit signal vector to hold bg bitmap
-    logic [255:0] solid_square;
-    // set all bits to HIGH using replication operator
-    assign solid_square = {256{1'b1}};
+	// create internal 256-bit signal vector to hold outline bits
+    logic [255:0] outline;
+    assign outline = 256'h0000_0000_3FFC_2004_2004_2004_2004_2004_2004_2004_2004_2004_2004_3FFC_0000_0000;
 
-  	// create 256-bit signal vector
-    logic [255:0] spot_4x4;
+  	// create 256 bit signal vector to hold fill shape
+    logic [255:0] fill;
+  	assign fill = 256'h0000_0000_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_3FFC_0000_0000;
+
+  
+    // create 256-bit signal vector
+    logic [255:0] pattern;
   	// stack 16 16-bit hex rows to make a pattern
-    assign spot_4x4 = {
+    assign pattern = {
         16'h0000, 16'h0000, 16'h0000, 16'h0000, 16'h0000, 16'h0000,
         16'h03C0, 16'h03C0, 16'h03C0, 16'h03C0,
         16'h0000, 16'h0000, 16'h0000, 16'h0000, 16'h0000, 16'h0000
     };
 
     // signal operation
-    assign frame_out = solid_square & spot_4x4;
+    assign frame_out = outline | (fill & pattern);
 
 endmodule
 
