@@ -26,14 +26,17 @@
   * 1.6 : matrix.sv
 
     * Drive LED matrix and frame updates into physical multiplexing signals (row selects, column data, clock, latch/OE pulses)
-* 1.7 : user\_input.sv
+  * 1.7 : user\_input.sv
 
-  * Manage system state with ON/OFF button and Generate button
-  * button debouncer
-  * FSM (IDLE, GENERATING, DISPLAY\_ON)
-* 1.8 : design\_top.sv
+    * Manage system state with ON/OFF button and Generate button
+    * button debouncer
+    * FSM (IDLE, GENERATING, DISPLAY\_ON)
+  * 1.8 : design\_top.sv
 
-  * Top-level wrapper for all RTL files and wires it all together.
+    * Top-level wrapper for all RTL files and wires it all together.
+  * 1.9 : LSFR.sv
+
+    * loops thru 2^N-1 values, number is sampled at button press
 * **2 : Verification**
 
   * 2.1 : tb\_virtual\_screen.sv
